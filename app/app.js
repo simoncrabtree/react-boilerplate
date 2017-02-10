@@ -2,16 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
 import { createStore } from 'redux';
-
-const reducer = (state = {appTitle: 'Hello Redux'}, action) => state
-const store = createStore(reducer)
-
+import reducer from './reducer'
 import App from './containers/App'
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStore(reducer)}>
     <App />
   </Provider>,
   document.getElementById('app')
 )
-
