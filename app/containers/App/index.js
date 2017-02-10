@@ -2,11 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 const mapState = (state) => {
-  console.log(state)
   return {
     pageTitle: state.app.title,
-    shoppingListInputValue: state.app.shoppingListInputValue,
-    items: state.app.items
+    shoppingListInputValue: state.shoppingList.inputValue,
+    items: state.shoppingList.items
   }
 }
 
@@ -32,7 +31,7 @@ const AppPage = ({pageTitle, shoppingListInputValue, items, onChange, onSubmit})
       />
     </form>
     <div>
-      {items.map((item) => <div>{item.name}</div>)}
+      {items.map((item) => <div key={item.name}>{item.name}</div>)}
     </div>
   </div>
 
