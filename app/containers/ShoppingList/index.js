@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import ShoppingListItemInput from './ShoppingListItemInput'
 import ShoppingListItem from './ShoppingListItem'
 
 const mapState = (state) => {
@@ -22,17 +23,8 @@ const mapDispatch = (dispatch) => {
 const ShoppingListPage = ({ shoppingListInputValue, items, onChange, onSubmit }) =>
 <div>
   <h1>Shopping List</h1>
-  <form onSubmit={onSubmit}>
-    <input 
-      type='text'
-      placeholder='Add item to list'
-      value={shoppingListInputValue}
-      onChange={onChange}
-    />
-  </form>
-  <div>
-    {items.map(item => <ShoppingListItem key={item.name} item={item} />)}
-  </div>
+  <ShoppingListItemInput value={shoppingListInputValue} onChange={onChange} onSubmit={onSubmit} />
+  {items.map(item => <ShoppingListItem key={item.name} item={item} />)}
 </div>
 
 export default connect(mapState, mapDispatch)(ShoppingListPage)
