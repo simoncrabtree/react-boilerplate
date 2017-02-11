@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import ShoppingListItem from './ShoppingListItem'
 
 const mapState = (state) => {
   return {
@@ -30,7 +31,7 @@ const ShoppingListPage = ({ shoppingListInputValue, items, onChange, onSubmit })
     />
   </form>
   <div>
-    {items.map((item) => <div key={item.name}>{item.name}</div>)}
+    {items.map(item => <ShoppingListItem key={item.name} item={item} />)}
   </div>
 </div>
 
