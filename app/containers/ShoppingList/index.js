@@ -16,13 +16,15 @@ const mapDispatch = (dispatch) => {
     onSubmit: e => {
       e.preventDefault()
       dispatch({type: 'SHOPPINGLIST_ITEM_ADD'})
-    }
+    },
+    saveShoppingList: e => dispatch({type: 'SHOPPINGLIST_SAVE'})
   }
 }
 
-const ShoppingListPage = ({ shoppingListInputValue, items, onChange, onSubmit }) =>
+const ShoppingListPage = ({ shoppingListInputValue, items, onChange, onSubmit, saveShoppingList }) =>
 <div>
   <h1>Shopping List</h1>
+  <button onClick={saveShoppingList}>Save</button>
   <ShoppingListItemInput value={shoppingListInputValue} onChange={onChange} onSubmit={onSubmit} />
   {items.map(item => <ShoppingListItem key={item.name} item={item} />)}
 </div>
