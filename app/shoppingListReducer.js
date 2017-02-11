@@ -19,6 +19,19 @@ export default (state = {
         inputValue: ''
       }
 
+    case 'SHOPPINGLIST_SAVE':
+      return {
+        ...state,
+        isSaving: true
+      }
+
+    case 'SAVED_SHOPPINGLIST':
+    case 'ERROR_SAVING_SHOPPINGLIST':
+      return {
+        ...state,
+        isSaving: false
+      }
+
     default:
       return state
   }

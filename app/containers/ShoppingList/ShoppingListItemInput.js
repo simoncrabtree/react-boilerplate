@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({value, onChange, onSubmit}) => 
+export default ({value, isSaving, onChange, onSubmit}) => 
   <form onSubmit={onSubmit}>
     <input 
       type='text'
@@ -8,5 +8,6 @@ export default ({value, onChange, onSubmit}) =>
       value={value}
       onChange={onChange}
     />
+    {isSaving ? <span>Saving...</span> : null}
   </form>
   

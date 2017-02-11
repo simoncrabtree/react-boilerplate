@@ -6,7 +6,8 @@ import ShoppingListItem from './ShoppingListItem'
 const mapState = (state) => {
   return {
     items: state.shoppingList.items,
-    shoppingListInputValue: state.shoppingList.inputValue
+    shoppingListInputValue: state.shoppingList.inputValue,
+    isSaving: state.shoppingList.isSaving
   }
 }
 
@@ -21,11 +22,11 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-const ShoppingListPage = ({ shoppingListInputValue, items, onChange, onSubmit, saveShoppingList }) =>
+const ShoppingListPage = ({ shoppingListInputValue, items, isSaving, onChange, onSubmit, saveShoppingList }) =>
 <div>
   <h1>Shopping List</h1>
   <button onClick={saveShoppingList}>Save</button>
-  <ShoppingListItemInput value={shoppingListInputValue} onChange={onChange} onSubmit={onSubmit} />
+  <ShoppingListItemInput value={shoppingListInputValue} isSaving={isSaving} onChange={onChange} onSubmit={onSubmit} />
   {items.map(item => <ShoppingListItem key={item.name} item={item} />)}
 </div>
 
