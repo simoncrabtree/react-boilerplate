@@ -8,7 +8,7 @@ import 'babel-polyfill'
 
 import appReducer from './appReducer'
 import shoppingListReducer from './shoppingListReducer'
-import App, { routes } from './Routes'
+import Routes, { routes } from './Routes'
 import rootSaga from './sagas'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -45,6 +45,6 @@ const wrap = store => Root =>
   </Provider>
 
 render(
-  wrap(store)(App),
+  wrap(store)(Routes),
   document.getElementById('app')
 )
