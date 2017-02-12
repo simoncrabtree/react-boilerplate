@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux'
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 // Needed for redux-saga es6 generator support
@@ -11,10 +11,10 @@ import shoppingListReducer from './shoppingListReducer'
 import App from './containers/App'
 import rootSaga from './sagas'
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap-theme.css'
 
-import { routerForBrowser, RouterProvider  } from 'redux-little-router';
+import { routerForBrowser, RouterProvider } from 'redux-little-router'
 
 const routes = {
   '/': {
