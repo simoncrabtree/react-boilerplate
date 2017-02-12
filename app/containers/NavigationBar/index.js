@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
+import styled from 'styled-components'
+
 import SplashScreen from './SplashScreen'
 
 const mapState = state => {
-  console.log(state)
   return {
     router: state.router
   }
@@ -16,13 +17,15 @@ const mapDispatch = dispatch => {
   }
 }
 
+const Logo = styled.span`
+  cursor: pointer
+`
+
 const NavigationBar = ({ router, navigateTo }) =>
   <div>
     <Navbar inverse collapseOnSelect>
       <Navbar.Header>
-        <Navbar.Brand>
-          <a href='#' onClick={navigateTo('/home')}>cubdi</a>
-        </Navbar.Brand>
+        <Navbar.Brand><Logo onClick={navigateTo('/home')}>cubdi</Logo></Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
