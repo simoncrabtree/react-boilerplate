@@ -8,30 +8,13 @@ import 'babel-polyfill'
 
 import appReducer from './appReducer'
 import shoppingListReducer from './shoppingListReducer'
-import App from './containers/App'
+import App, { routes } from './Routes'
 import rootSaga from './sagas'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap-theme.css'
 
 import { routerForBrowser, RouterProvider } from 'redux-little-router'
-
-const routes = {
-  '/': {
-  },
-  '/home': {
-    title: 'Home'
-  },
-  '/shopping': {
-    title: 'Shopping List'
-  },
-  '/cupboard': {
-    title: 'Cupboard'
-  },
-  '/recipes/:recipe': {
-    title: 'Recipe'
-  }
-}
 
 const {
   routerEnhancer,
