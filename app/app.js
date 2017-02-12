@@ -18,7 +18,6 @@ import { routerForBrowser, RouterProvider  } from 'redux-little-router';
 
 const routes = {
   '/': {
-    title: 'Home',
   },
   '/home': {
     title: 'Home'
@@ -29,11 +28,14 @@ const routes = {
   '/cupboard': {
     title: 'Cupboard'
   },
+  '/recipes': {
+    title: 'Recipes'
+  }
 }
 
 const {
   routerEnhancer,
-  routerMiddleware  
+  routerMiddleware
 } = routerForBrowser({ routes })
 
 const sagaMiddleware = createSagaMiddleware()

@@ -1,20 +1,20 @@
 /*
  *
- * {{properCase name }}
+ * Recipes
  *
  */
 
 import React from 'react'
 import { connect } from 'react-redux'
 
-const {{ properCase name }} = ({ title }) =>
+const Recipes = ({ title }) =>
   <div>
     <h1>{title}</h1>
   </div>
 
 const mapState = state => {
   return {
-    title: '{{ properCase name }}'
+    title: 'Recipes'
   }
 }
 
@@ -24,4 +24,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)({{ properCase name }})
+export default connect(mapState, mapDispatch)(Recipes)

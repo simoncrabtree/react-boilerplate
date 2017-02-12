@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "generate": "plop --plopfile internals/generators/index.js",
     "start": "cross-env NODE_ENV=development node server"
   },
   "author": "Simon Crabtree",
@@ -59,6 +60,7 @@
     "exports-loader": "0.6.3",
     "file-loader": "0.9.0",
     "html-webpack-plugin": "2.24.1",
+    "plop": "1.7.3",
     "style-loader": "0.13.1",
     "webpack": "2.2.1",
     "webpack-dev-middleware": "1.9.0",

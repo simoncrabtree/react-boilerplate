@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link, RelativeFragment as Fragment } from 'redux-little-router'
 import NavigationBar from '../NavigationBar'
 import ShoppingList from '../ShoppingList'
+import Recipes from '../Recipes'
 
 const mapState = (state) => state
 
@@ -19,6 +20,9 @@ const AppPage = ({ pageTitle }) =>
     </Fragment>
     <Fragment key='/cupboard' forRoute='/cupboard'>
       <p>Cupboard</p>
+    </Fragment>
+    <Fragment key='/recipes' forRoute='/recipes'>
+      <Recipes />
     </Fragment>
   </div>
 
