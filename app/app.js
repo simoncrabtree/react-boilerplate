@@ -11,6 +11,9 @@ import shoppingListReducer from './shoppingListReducer'
 import App from './containers/App'
 import rootSaga from './sagas'
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+
 import { routerForBrowser, RouterProvider  } from 'redux-little-router';
 
 const routes = {
