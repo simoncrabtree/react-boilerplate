@@ -21,7 +21,7 @@ const AppPage = ({ pageTitle }) =>
     <Fragment key='/cupboard' forRoute='/cupboard'>
       <p>Cupboard</p>
     </Fragment>
-    <Fragment key='/recipes' forRoute='/recipes'>
+    <Fragment forRoute='/recipes/:recipe'>
       <Recipes />
     </Fragment>
   </div>

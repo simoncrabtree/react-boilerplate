@@ -7,14 +7,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Recipes = ({ title }) =>
+const Recipes = ({ title, recipe }) =>
   <div>
-    <h1>{title}</h1>
+    <h1>{title} - {recipe}</h1>
   </div>
 
 const mapState = state => {
+  console.log(state.router)
   return {
-    title: 'Recipes'
+    title: 'Recipes',
+    recipe: state.router.params.recipe
   }
 }
 

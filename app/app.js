@@ -28,8 +28,8 @@ const routes = {
   '/cupboard': {
     title: 'Cupboard'
   },
-  '/recipes': {
-    title: 'Recipes'
+  '/recipes/:recipe': {
+    title: 'Recipe'
   }
 }
 
