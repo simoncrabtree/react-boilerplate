@@ -1,8 +1,11 @@
 import React from 'react'
 
-export default ({value, isSaving, onChange, onSubmit}) => 
-  <form onSubmit={onSubmit}>
-    <input 
+export default ({value, isSaving, onChange, onSubmit}) =>
+  <form onSubmit={e => {
+    e.preventDefault()
+    onSubmit(value)
+  }}>
+    <input
       type='text'
       placeholder='Add item to list'
       value={value}
@@ -10,4 +13,3 @@ export default ({value, isSaving, onChange, onSubmit}) =>
     />
     {isSaving ? <span>Saving...</span> : null}
   </form>
-  

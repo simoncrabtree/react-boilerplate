@@ -10,11 +10,13 @@ export default (state = {
       }
 
     case 'SHOPPINGLIST_ITEM_ADD':
+      if (state.items.some(item => item.name === action.itemName)) return state
+
       return {
         ...state,
         items: [
           ...state.items,
-          {name: state.inputValue}
+          {name: action.itemName}
         ],
         inputValue: ''
       }

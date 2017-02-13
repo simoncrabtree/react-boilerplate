@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ShoppingListItemInput from './ShoppingListItemInput'
 import ShoppingListItem from './ShoppingListItem'
+import uuid from 'node-uuid'
 
 const mapState = (state) => {
   return {
@@ -14,20 +15,19 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     onChange: e => dispatch({type: 'SHOPPINGLIST_INPUT_CHANGE', value: e.target.value}),
-    onSubmit: e => {
-      e.preventDefault()
-      dispatch({type: 'SHOPPINGLIST_ITEM_ADD'})
+    onSubmit: value => {
+      dispatch({type: 'SHOPPINGLIST_ITEM_ADD', itemName: value, eid: uuid.v4()})
     },
     saveShoppingList: e => dispatch({type: 'SHOPPINGLIST_SAVE'})
   }
 }
 
 const ShoppingListPage = ({ shoppingListInputValue, items, isSaving, onChange, onSubmit, saveShoppingList }) =>
-<div>
-  <h1>Shopping List</h1>
-  <button onClick={saveShoppingList}>Save</button>
-  <ShoppingListItemInput value={shoppingListInputValue} isSaving={isSaving} onChange={onChange} onSubmit={onSubmit} />
-  {items.map(item => <ShoppingListItem key={item.name} item={item} />)}
-</div>
+  <div>
+    <h1>Shopping List</h1>
+    <button onClick={saveShoppingList}>Save</button>
+    <ShoppingListItemInput value={shoppingListInputValue} isSaving={isSaving} onChange={onChange} onSubmit={onSubmit} />
+    {items.map(item => <ShoppingListItem key={item.name} item={item} />)}
+  </div>
 
 export default connect(mapState, mapDispatch)(ShoppingListPage)
