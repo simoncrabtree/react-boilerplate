@@ -21,17 +21,12 @@ export default (state = {
         inputValue: ''
       }
 
-    case 'SHOPPINGLIST_SAVE':
+    case 'SHOPPINGLIST_ITEM_DELETE':
       return {
         ...state,
-        isSaving: true
-      }
-
-    case 'SAVED_SHOPPINGLIST':
-    case 'ERROR_SAVING_SHOPPINGLIST':
-      return {
-        ...state,
-        isSaving: false
+        items: [
+          ...state.items.filter(item => item.name !== action.itemName)
+        ]
       }
 
     default:

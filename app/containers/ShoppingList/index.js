@@ -18,16 +18,15 @@ const mapDispatch = (dispatch) => {
     onSubmit: value => {
       dispatch({type: 'SHOPPINGLIST_ITEM_ADD', itemName: value, eid: uuid.v4()})
     },
-    saveShoppingList: e => dispatch({type: 'SHOPPINGLIST_SAVE'})
+    onDelete: value => e => dispatch({type: 'SHOPPINGLIST_ITEM_DELETE', itemName: value, eid: uuid.v4()})
   }
 }
 
-const ShoppingListPage = ({ shoppingListInputValue, items, isSaving, onChange, onSubmit, saveShoppingList }) =>
+const ShoppingListPage = ({ shoppingListInputValue, items, isSaving, onChange, onSubmit, onDelete }) =>
   <div>
     <h1>Shopping List</h1>
-    <button onClick={saveShoppingList}>Save</button>
     <ShoppingListItemInput value={shoppingListInputValue} isSaving={isSaving} onChange={onChange} onSubmit={onSubmit} />
-    {items.map(item => <ShoppingListItem key={item.name} item={item} />)}
+    {items.map(item => <ShoppingListItem key={item.name} item={item} onDelete={onDelete(item.name)}/>)}
   </div>
 
 export default connect(mapState, mapDispatch)(ShoppingListPage)
