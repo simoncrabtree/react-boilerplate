@@ -1,4 +1,4 @@
-import { delay } from 'redux-saga'
+import { delay, buffers } from 'redux-saga'
 import { call, put, takeEvery, take, actionChannel, takeLatest } from 'redux-saga/effects'
 
 const postToServer = (payload) => {
@@ -8,7 +8,7 @@ const postToServer = (payload) => {
   })
 }
 
-export function* persistEvent (evt) {
+export function* postActionToServer (evt) {
   while (true) {
     try {
       yield call(postToServer, evt)
@@ -24,20 +24,25 @@ export function* persistEvent (evt) {
   }
 }
 
-export function* watchRequests () {
+const actionsToPostToServer = {
+  'SHOPPINGLIST_ITEM_ADD': true,
+  'SHOPPINGLIST_ITEM_DELETE': true
+}
+
+export function* watchForEvents () {
   // 1- Create a channel for request actions
-  const requestChan = yield actionChannel('SHOPPINGLIST_ITEM_ADD')
+  const requestChan = yield actionChannel('*', buffers.expanding(10))
   while (true) {
     // 2- take from the channel
     const evt = yield take(requestChan)
-    console.log('event', evt)
-    // 3- Note that we're using a blocking call
-    yield call(persistEvent, evt)
+    if (actionsToPostToServer[evt.type]) {
+      yield call(postActionToServer, evt)
+    }
   }
 }
 
 export default function* rootSaga () {
   yield [
-    watchRequests()
+    watchForEvents()
   ]
 }
