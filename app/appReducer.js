@@ -12,6 +12,12 @@ export default (state = {
         isLoggedIn: true
       }
 
+    case 'USER_LOGGED_OUT':
+      return {
+        ...state,
+        isLoggedIn: false
+      }
+
     default:
       return state
   }

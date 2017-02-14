@@ -13,7 +13,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    navigateTo: route => e => dispatch({type: 'ROUTER_PUSH', payload: route})
+    navigateTo: route => e => dispatch({type: 'ROUTER_PUSH', payload: route}),
+    logout: () => dispatch({type: 'LOGOUT'})
   }
 }
 
@@ -21,7 +22,7 @@ const Logo = styled.span`
   cursor: pointer
 `
 
-const NavigationBar = ({ router, navigateTo }) =>
+const NavigationBar = ({ router, navigateTo, logout }) =>
   <div>
     <Navbar inverse collapseOnSelect>
       <Navbar.Header>
@@ -32,6 +33,9 @@ const NavigationBar = ({ router, navigateTo }) =>
         <Nav>
           <NavItem onClick={navigateTo('/shopping')}>Shopping</NavItem>
           <NavItem onClick={navigateTo('/cupboard')}>Cupboard</NavItem>
+        </Nav>
+        <Nav pullRight>
+          <NavItem onClick={logout}>Logout</NavItem>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
