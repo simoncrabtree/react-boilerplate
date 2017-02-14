@@ -26,13 +26,14 @@ const {
 
 const sagaMiddleware = createSagaMiddleware()
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   combineReducers({
     app: appReducer,
     login: loginReducer,
     shoppingList: shoppingListReducer
   }),
-  compose(
+  composeEnhancers(
     routerEnhancer,
     applyMiddleware(routerMiddleware),
     applyMiddleware(sagaMiddleware)
