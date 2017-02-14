@@ -15,7 +15,7 @@ export function passwordChanged (password) {
 export function login (username, password) {
   return {
     type: 'LOGIN',
-    username: password,
+    username: username,
     password: password
   }
 }
