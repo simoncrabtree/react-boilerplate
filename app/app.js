@@ -6,7 +6,7 @@ import createSagaMiddleware from 'redux-saga'
 // Needed for redux-saga es6 generator support
 import 'babel-polyfill'
 
-import appReducer from './appReducer'
+import appReducer from './reducers/appReducer'
 import loginReducer from './loginReducer'
 import shoppingListReducer from './shoppingListReducer'
 import { routes } from './Routes'
