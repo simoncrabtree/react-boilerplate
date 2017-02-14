@@ -22,9 +22,13 @@ const Logo = styled.span`
   cursor: pointer
 `
 
+const StyledNavbar = styled(Navbar)`
+  border-radius: 0;
+`
+
 const NavigationBar = ({ router, navigateTo, logout }) =>
   <div>
-    <Navbar inverse collapseOnSelect>
+    <StyledNavbar inverse collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand><Logo onClick={navigateTo('/home')}>cubdi</Logo></Navbar.Brand>
         <Navbar.Toggle />
@@ -38,7 +42,7 @@ const NavigationBar = ({ router, navigateTo, logout }) =>
           <NavItem onClick={logout}>Logout</NavItem>
         </Nav>
       </Navbar.Collapse>
-    </Navbar>
+    </StyledNavbar>
     {router.route === '/' ? <SplashScreen /> : null}
   </div>
 
