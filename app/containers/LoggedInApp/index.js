@@ -10,18 +10,20 @@ const LoggedInApp = () =>
     <Fragment forRoute='/'>
       <NavigationBar />
     </Fragment>
-    <Fragment forRoute='/home'>
-      <p>Home</p>
-    </Fragment>
-    <Fragment forRoute='/shopping'>
-      <ShoppingList />
-    </Fragment>
-    <Fragment forRoute='/cupboard'>
-      <p>Cupboard</p>
-    </Fragment>
-    <Fragment forRoute='/recipes/:recipe'>
-      <Recipes />
-    </Fragment>
+    <div className='container-fluid'>
+      <Fragment forRoute='/home'>
+        <p>Home</p>
+      </Fragment>
+      <Fragment forRoute='/shopping'>
+        <ShoppingList />
+      </Fragment>
+      <Fragment forRoute='/cupboard'>
+        <p>Cupboard</p>
+      </Fragment>
+      <Fragment forRoute='/recipes/:recipe'>
+        <Recipes />
+      </Fragment>
+    </div>
   </div>
 
 const mapState = state => state
