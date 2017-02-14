@@ -15,6 +15,18 @@ export default (state = {
         password: action.value
       }
 
+    case 'LOGGING_IN':
+      return {
+        ...state,
+        isLoggingIn: true
+      }
+
+    case 'USER_LOGGED_IN':
+      return {
+        ...state,
+        isLoggingIn: false
+      }
+
     default:
       return state
   }

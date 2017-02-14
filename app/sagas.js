@@ -42,7 +42,7 @@ export function* watchForEvents () {
 }
 
 export function* tryLoggingIn (action) {
-  console.log('tryLoggingIn', action)
+  yield put({type: 'LOGGING_IN'})
   yield delay(2000)
   localStorage.setItem('authToken', 'MOCK_TOKEN')
   yield put({type: 'USER_LOGGED_IN'})
