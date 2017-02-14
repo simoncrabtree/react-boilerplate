@@ -41,8 +41,19 @@ export function* watchForEvents () {
   }
 }
 
+export function* tryLoggingIn (action) {
+  console.log('tryLoggingIn', action)
+  yield delay(2000)
+  yield put({type: 'USER_LOGGED_IN'})
+}
+
+export function* listenForLogin () {
+  yield takeEvery('LOGIN', tryLoggingIn)
+}
+
 export default function* rootSaga () {
   yield [
-    watchForEvents()
+    watchForEvents(),
+    listenForLogin()
   ]
 }

@@ -7,14 +7,17 @@ import createSagaMiddleware from 'redux-saga'
 import 'babel-polyfill'
 
 import appReducer from './appReducer'
+import loginReducer from './loginReducer'
 import shoppingListReducer from './shoppingListReducer'
-import Routes, { routes } from './Routes'
+import { routes } from './Routes'
 import rootSaga from './sagas'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap-theme.css'
 
 import { routerForBrowser, RouterProvider } from 'redux-little-router'
+
+import AppRoot from './containers/AppRoot'
 
 const {
   routerEnhancer,
@@ -26,6 +29,7 @@ const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
   combineReducers({
     app: appReducer,
+    login: loginReducer,
     shoppingList: shoppingListReducer
   }),
   compose(
@@ -45,6 +49,6 @@ const wrap = store => Root =>
   </Provider>
 
 render(
-  wrap(store)(Routes),
+  wrap(store)(AppRoot),
   document.getElementById('app')
 )
