@@ -6,6 +6,7 @@ import createSagaMiddleware from 'redux-saga'
 // Needed for redux-saga es6 generator support
 import 'babel-polyfill'
 
+import reducers from './reducers'
 import appReducer from './reducers/appReducer'
 import loginReducer from './reducers/loginReducer'
 import shoppingListReducer from './reducers/shoppingListReducer'
@@ -28,11 +29,7 @@ const sagaMiddleware = createSagaMiddleware()
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
-  combineReducers({
-    app: appReducer,
-    login: loginReducer,
-    shoppingList: shoppingListReducer
-  }),
+  reducers,
   composeEnhancers(
     routerEnhancer,
     applyMiddleware(routerMiddleware),
