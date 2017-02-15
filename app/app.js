@@ -1,15 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 // Needed for redux-saga es6 generator support
 import 'babel-polyfill'
 
 import reducers from './reducers'
-import appReducer from './reducers/appReducer'
-import loginReducer from './reducers/loginReducer'
-import shoppingListReducer from './reducers/shoppingListReducer'
 import { routes } from './Routes'
 import rootSaga from './sagas'
 
