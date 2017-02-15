@@ -1,6 +1,5 @@
 import appReducer from '../appReducer'
 
-
 test('appReducer initial state', () => {
   const newState = appReducer(undefined, {})
   expect(newState).toEqual({
