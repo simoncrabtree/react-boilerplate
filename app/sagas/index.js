@@ -2,6 +2,18 @@
 import { delay, buffers } from 'redux-saga'
 import { call, put, takeEvery, take, actionChannel } from 'redux-saga/effects'
 
+export function localStorageSetItem (key, value) {
+  localStorage.setItem(key, value)
+}
+
+export function localStorageGetItem (key) {
+  return localStorage[key]
+}
+
+export function localStorageRemoveItem (key) {
+  localStorage.removeItem(key)
+}
+
 const postToServer = (payload) => {
   return fetch('http://localhost:5000/shoppinglist', {
     method: 'POST',
@@ -44,8 +56,8 @@ export function* watchForEvents () {
 
 export function* tryLoggingIn (action) {
   yield put({type: 'LOGGING_IN'})
-  yield delay(2000)
-  localStorage.setItem('authToken', 'MOCK_TOKEN')
+  yield call(delay, 2000)
+  yield call(localStorageSetItem, 'authToken', 'MOCK_TOKEN')
   yield put({type: 'USER_LOGGED_IN'})
 }
 
@@ -54,12 +66,13 @@ export function* listenForLogin () {
 }
 
 export function* checkIfLoggedIn () {
-  if (localStorage.authToken) yield put({type: 'USER_LOGGED_IN'})
+  const token = yield call(localStorageGetItem, 'authToken')
+  if (token) yield put({type: 'USER_LOGGED_IN'})
 }
 
 export function* logout () {
   yield delay(1000)
-  localStorage.removeItem('authToken')
+  yield call(localStorageRemoveItem, 'authToken')
   yield put({type: 'USER_LOGGED_OUT'})
 }
 
