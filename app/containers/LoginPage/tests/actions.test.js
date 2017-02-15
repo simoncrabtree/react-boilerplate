@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import {usernameChanged, passwordChanged, login} from '../actions'
 
 test('usernameChanged action', () => {

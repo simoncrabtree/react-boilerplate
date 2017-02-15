@@ -26,7 +26,7 @@ const ShoppingListPage = ({ shoppingListInputValue, items, isSaving, onChange, o
   <div>
     <h1>Shopping List</h1>
     <ShoppingListItemInput value={shoppingListInputValue} isSaving={isSaving} onChange={onChange} onSubmit={onSubmit} />
-    {items.map(item => <ShoppingListItem key={item.name} item={item} onDelete={onDelete(item.name)}/>)}
+    {items.map(item => <ShoppingListItem key={item.name} item={item} onDelete={onDelete(item.name)} />)}
   </div>
 
 export default connect(mapState, mapDispatch)(ShoppingListPage)

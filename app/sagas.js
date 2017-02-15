@@ -1,5 +1,6 @@
+/* global fetch, localStorage */
 import { delay, buffers } from 'redux-saga'
-import { call, put, takeEvery, take, actionChannel, takeLatest } from 'redux-saga/effects'
+import { call, put, takeEvery, take, actionChannel } from 'redux-saga/effects'
 
 const postToServer = (payload) => {
   return fetch('http://localhost:5000/shoppinglist', {
