@@ -7,8 +7,8 @@ import createSagaMiddleware from 'redux-saga'
 import 'babel-polyfill'
 
 import appReducer from './reducers/appReducer'
-import loginReducer from './loginReducer'
-import shoppingListReducer from './shoppingListReducer'
+import loginReducer from './reducers/loginReducer'
+import shoppingListReducer from './reducers/shoppingListReducer'
 import { routes } from './Routes'
 import rootSaga from './sagas'
 

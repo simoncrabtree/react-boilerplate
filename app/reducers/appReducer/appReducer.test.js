@@ -1,4 +1,5 @@
-import appReducer from '../appReducer'
+/* eslint-env jest */
+import appReducer from './index'
 
 test('appReducer initial state', () => {
   const newState = appReducer(undefined, {})
