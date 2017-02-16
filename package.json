@@ -6,7 +6,7 @@
   "scripts": {
     "generate": "plop --plopfile internals/generators/index.js",
     "start": "cross-env NODE_ENV=development node server",
-    "test": "cross-env NODE_ENV=test standard && jest",
+    "test": "cross-env NODE_ENV=test jest",
     "test:watch": "npm test -- --watch"
   },
   "author": "Simon Crabtree",

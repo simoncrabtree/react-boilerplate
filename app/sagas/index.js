@@ -42,15 +42,17 @@ const actionsToPostToServer = {
   'SHOPPINGLIST_ITEM_DELETE': true
 }
 
+export function* handleEvent (evt) {
+  if (actionsToPostToServer[evt.type]) {
+    console.log('Posting to server')
+    yield call(postActionToServer, evt)
+  }
+}
+
 export function* watchForEvents () {
-  // 1- Create a channel for request actions
   const requestChan = yield actionChannel('*', buffers.expanding(10))
   while (true) {
-    // 2- take from the channel
-    const evt = yield take(requestChan)
-    if (actionsToPostToServer[evt.type]) {
-      yield call(postActionToServer, evt)
-    }
+    yield call(handleEvent, yield take(requestChan))
   }
 }
 
