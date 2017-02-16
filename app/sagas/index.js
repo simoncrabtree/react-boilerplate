@@ -14,7 +14,7 @@ export function localStorageRemoveItem (key) {
   localStorage.removeItem(key)
 }
 
-const postToServer = (payload) => {
+export function postToServer (payload) {
   return fetch('http://localhost:5000/shoppinglist', {
     method: 'POST',
     body: JSON.stringify(payload)
@@ -44,7 +44,6 @@ const actionsToPostToServer = {
 
 export function* handleEvent (evt) {
   if (actionsToPostToServer[evt.type]) {
-    console.log('Posting to server')
     yield call(postActionToServer, evt)
   }
 }
