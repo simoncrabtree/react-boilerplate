@@ -1,4 +1,3 @@
-/* global fetch, localStorage */
 import { call } from 'redux-saga/effects'
 import postActionToServer from './postActionToServer'
 

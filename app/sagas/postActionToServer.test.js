@@ -1,25 +1,27 @@
 /* eslint-env jest */
-import { call, put } from 'redux-saga/effects'
-import { delay } from 'redux-saga'
+import { call } from 'redux-saga/effects'
 import sagaHelper from 'redux-saga-testing'
-import tryLoggingIn from './tryLoggingIn'
-import { localStorageSetItem, doPost } from './externalApis'
 import handleAction from './handleAction'
 import postActionToServer from './postActionToServer'
 
-describe('post action to server', () => {
-  const action = {type: 'MY_TEST_ACTION', stuff: 'Other Params'} 
-  const it = sagaHelper(postActionToServer(action))
+describe('handle an action which should be posted to the server', () => {
+  const action = {type: 'SHOPPINGLIST_ITEM_ADD'}
+  const it = sagaHelper(handleAction(action))
 
-  it('calls the Http POST with the action as its argument', result => {
-    expect(result).toEqual(call(doPost, action))
+  it('POSTs the action object to the server', result => {
+    expect(result).toEqual(call(postActionToServer, action))
   })
 
-  it('fires the EVENT_PERSISTED Action', result => {
-    expect(result).toEqual(put({type: 'EVENT_PERSISTED'}))
+  it('ends', result => {
+    expect(result).toBeUndefined()
   })
+})
 
-  it('finishes', result => {
+describe('handle an action which should NOT be posted to the server', () => {
+  const action = {type: 'RANDOM_ACTION'}
+  const it = sagaHelper(handleAction(action))
+
+  it('does nothing', result => {
     expect(result).toBeUndefined()
   })
 })

@@ -1,6 +1,5 @@
-/* global fetch, localStorage */
-import { delay, buffers } from 'redux-saga'
-import { call, put, takeEvery, take, actionChannel } from 'redux-saga/effects'
+import { delay } from 'redux-saga'
+import { call, put } from 'redux-saga/effects'
 import { doPost } from './externalApis'
 
 export default function* postActionToServer (action) {
