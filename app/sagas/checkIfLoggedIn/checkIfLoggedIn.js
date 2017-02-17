@@ -1,9 +1,9 @@
 /* eslint-env jest */
 import { call, put } from 'redux-saga/effects'
 import sagaHelper from 'redux-saga-testing'
-import { localStorageGetItem } from './externalApis'
+import { localStorageGetItem } from '../externalApis'
 
-import checkIfLoggedIn from './checkIfLoggedIn'
+import checkIfLoggedIn from './index'
 
 describe('When a user IS logged in', () => {
   const it = sagaHelper(checkIfLoggedIn())

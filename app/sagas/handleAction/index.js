@@ -1,5 +1,5 @@
 import { call } from 'redux-saga/effects'
-import postActionToServer from './postActionToServer'
+import postActionToServer from '../postActionToServer'
 
 const actionsToPostToServer = {
   'SHOPPINGLIST_ITEM_ADD': true,

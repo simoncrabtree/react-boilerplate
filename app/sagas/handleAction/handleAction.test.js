@@ -1,8 +1,8 @@
 /* eslint-env jest */
 import { call } from 'redux-saga/effects'
 import sagaHelper from 'redux-saga-testing'
-import handleAction from './handleAction'
-import postActionToServer from './postActionToServer'
+import handleAction from './index'
+import postActionToServer from '../postActionToServer'
 
 describe('handle an action which should be posted to the server', () => {
   const action = {type: 'SHOPPINGLIST_ITEM_ADD'}

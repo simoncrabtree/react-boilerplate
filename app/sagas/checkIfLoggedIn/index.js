@@ -1,5 +1,5 @@
 import { call, put } from 'redux-saga/effects'
-import { localStorageGetItem } from './externalApis'
+import { localStorageGetItem } from '../externalApis'
 
 export default function* checkIfLoggedIn () {
   const token = yield call(localStorageGetItem, 'authToken')

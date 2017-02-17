@@ -1,6 +1,6 @@
 import { delay } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
-import { doPost } from './externalApis'
+import { doPost } from '../externalApis'
 
 export default function* postActionToServer (action) {
   while (true) {

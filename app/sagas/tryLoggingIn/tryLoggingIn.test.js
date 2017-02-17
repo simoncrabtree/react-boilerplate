@@ -2,8 +2,8 @@
 import { call, put } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import sagaHelper from 'redux-saga-testing'
-import tryLoggingIn from './tryLoggingIn'
-import { localStorageSetItem } from './externalApis'
+import tryLoggingIn from './index'
+import { localStorageSetItem } from '../externalApis'
 
 describe('try logging in - success', () => {
   const it = sagaHelper(tryLoggingIn())
