@@ -1,6 +1,6 @@
 /* global fetch, localStorage */
 import { call } from 'redux-saga/effects'
-import { postToServer } from './externalApis'
+import postActionToServer from './postActionToServer'
 
 const actionsToPostToServer = {
   'SHOPPINGLIST_ITEM_ADD': true,
@@ -9,6 +9,6 @@ const actionsToPostToServer = {
 
 export default function* (action) {
   if (actionsToPostToServer[action.type]) {
-    yield call(postToServer, action)
+    yield call(postActionToServer, action)
   }
 }
