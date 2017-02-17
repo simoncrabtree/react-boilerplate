@@ -2,6 +2,8 @@
 import { delay, buffers } from 'redux-saga'
 import { call, put, takeEvery, take, actionChannel } from 'redux-saga/effects'
 
+import listenForLogout from './listenForLogout'
+
 export function localStorageSetItem (key, value) {
   localStorage.setItem(key, value)
 }
@@ -12,40 +14,6 @@ export function localStorageGetItem (key) {
 
 export function localStorageRemoveItem (key) {
   localStorage.removeItem(key)
-}
-
-export function postToServer (payload) {
-  return fetch('http://localhost:5000/shoppinglist', {
-    method: 'POST',
-    body: JSON.stringify(payload)
-  })
-}
-
-export function* postActionToServer (evt) {
-  while (true) {
-    try {
-      yield call(postToServer, evt)
-      // yield put({ type: 'EVENT_PERSISTED' })
-      console.log('Saved!')
-      return
-    } catch (error) {
-      // yield put({ type: 'ERROR_PERSISTING_EVENT' })
-      console.error(error)
-      yield call(delay, 1000)
-      console.log('retrying')
-    }
-  }
-}
-
-const actionsToPostToServer = {
-  'SHOPPINGLIST_ITEM_ADD': true,
-  'SHOPPINGLIST_ITEM_DELETE': true
-}
-
-export function* handleEvent (evt) {
-  if (actionsToPostToServer[evt.type]) {
-    yield call(postActionToServer, evt)
-  }
 }
 
 export function* watchForEvents () {
@@ -75,10 +43,6 @@ export function* logout () {
   yield delay(1000)
   yield call(localStorageRemoveItem, 'authToken')
   yield put({type: 'USER_LOGGED_OUT'})
-}
-
-export function* listenForLogout () {
-  yield takeEvery('LOGOUT', logout)
 }
 
 export default function* rootSaga () {

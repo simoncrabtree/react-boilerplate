@@ -2,7 +2,9 @@
 import { call, put } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import sagaHelper from 'redux-saga-testing'
-import { tryLoggingIn, handleEvent, localStorageSetItem, postActionToServer } from './index'
+import { tryLoggingIn, localStorageSetItem } from './index'
+import { postToServer } from './externalApis'
+import handleAction from './handleAction'
 
 describe('try logging in - success', () => {
   const it = sagaHelper(tryLoggingIn())
@@ -26,16 +28,16 @@ describe('try logging in - success', () => {
 
 describe('handle an action which should be posted to the server', () => {
   const action = {type: 'SHOPPINGLIST_ITEM_ADD'} 
-  const it = sagaHelper(handleEvent(action))
+  const it = sagaHelper(handleAction(action))
 
   it('is POSTed to the server', result => {
-    expect(result).toEqual(call(postActionToServer, action))
+    expect(result).toEqual(call(postToServer, action))
   })
 })
 
 describe('handle an action which should NOT be posted to the server', () => {
   const action = {type: 'RANDOM_ACTION'} 
-  const it = sagaHelper(handleEvent(action))
+  const it = sagaHelper(handleAction(action))
 
   it('is not POSTed to the server', result => {
     expect(result).toBeUndefined()
