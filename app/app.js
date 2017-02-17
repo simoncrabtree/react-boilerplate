@@ -7,8 +7,8 @@ import createSagaMiddleware from 'redux-saga'
 import 'babel-polyfill'
 
 import reducers from './reducers'
-import { routes } from './Routes'
-import rootSaga from './sagas'
+import routes from './routes'
+import sagas from './sagas'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap-theme.css'
@@ -34,7 +34,7 @@ const store = createStore(
   )
 )
 
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(sagas)
 
 const wrap = store => Root =>
   <Provider store={store}>
