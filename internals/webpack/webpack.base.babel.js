@@ -77,6 +77,9 @@ module.exports = (options) => ({
     new webpack.NamedModulesPlugin(),
   ]),
   resolve: {
+    alias: {
+      recipepages: '../../recipepages'
+    },
     modules: ['app', 'node_modules'],
     extensions: [
       '.js',

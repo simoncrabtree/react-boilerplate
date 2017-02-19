@@ -45,8 +45,9 @@ class Recipes extends React.Component {
       console.log('Got Component')
       let page = null
       try {
-        page = require(`./${this.props.recipe}`)
+        page = require(`recipepages/${this.props.recipe}`)
       } catch (err) {
+        console.error(err)
         page = (recipe) => React.createElement('h1', null, `Recipe ${recipe} not found`)
       }
 
