@@ -1,0 +1,6 @@
+define(
+  [],
+  function() {
+    // initialize application
+  }
+)
