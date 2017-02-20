@@ -21,37 +21,31 @@ const mapDispatch = dispatch => {
   }
 }
 
+function componentFactory (React) {
+  var myComponent = eval(`
+    function page (recipe) {
+      return React.createElement('div', null, recipe)
+    };
+    page;
+  `)
+  return myComponent
+}
+
 class Recipes extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      pageToRender: null
+      pageToRender: () => React.createElement('div', null, 'Loading...')
     }
   }
 
   render () {
-    if (!this.state.pageToRender) {
-      return (
-        <div>Loading...</div>
-      )
-    }
-
     return this.state.pageToRender(this.props.recipe)
   }
 
   componentDidMount () {
-    console.log('Getting Component')
     setTimeout(() => {
-      console.log('Got Component')
-      let page = null
-      try {
-        page = require(`recipepages/${this.props.recipe}`)
-      } catch (err) {
-        console.error(err)
-        page = (recipe) => React.createElement('h1', null, `Recipe ${recipe} not found`)
-      }
-
-      this.setState({pageToRender: page})
+      this.setState({ pageToRender: componentFactory(React) })
     }, 2000)
   }
 }
