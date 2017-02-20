@@ -6,6 +6,7 @@ import checkIfLoggedIn from './checkIfLoggedIn'
 import handleAction from './handleAction'
 import tryLoggingIn from './tryLoggingIn'
 import logout from './logout'
+import getRecipePage from './getRecipePage'
 
 export function* watchForEvents () {
   const requestChan = yield actionChannel('*', buffers.expanding(10))
@@ -19,6 +20,7 @@ export default function* rootSaga () {
     checkIfLoggedIn(),
     watchForEvents(),
     yield takeEvery('LOGIN', tryLoggingIn),
-    yield takeEvery('LOGOUT', logout)
+    yield takeEvery('LOGOUT', logout),
+    yield takeEvery('GET_RECIPE_PAGE', getRecipePage)
   ]
 }

@@ -8,46 +8,40 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 const mapState = state => {
-  console.log(state.router)
   return {
     title: 'Recipes',
-    recipe: state.router.params.recipe
+    recipe: state.router.params.recipe,
+    pageContent: state.recipe.pageContent
   }
 }
 
 const mapDispatch = dispatch => {
+  dispatch({type: 'GET_RECIPE_PAGE'})
   return {
     dispatch
   }
 }
 
-function componentFactory (React) {
-  var myComponent = eval(`
-    function page (recipe) {
-      return React.createElement('div', null, recipe)
-    };
-    page;
+function getComponentFromString (React, content) {
+  return eval(`
+    function page () {
+      return ${content}
+    }
+    page
   `)
-  return myComponent
 }
 
-class Recipes extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      pageToRender: () => React.createElement('div', null, 'Loading...')
-    }
-  }
+const Recipes = ({ title, recipe, pageContent }) => {
+  const PageContentComponent = getComponentFromString(React, pageContent)
 
-  render () {
-    return this.state.pageToRender(this.props.recipe)
-  }
-
-  componentDidMount () {
-    setTimeout(() => {
-      this.setState({ pageToRender: componentFactory(React) })
-    }, 2000)
-  }
+  return (
+    <div>
+      <h1>{title} - {recipe}</h1>
+      <div>
+        <PageContentComponent />
+      </div>
+    </div>
+  )
 }
 
 export default connect(mapState, mapDispatch)(Recipes)
