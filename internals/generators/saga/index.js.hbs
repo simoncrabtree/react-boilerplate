@@ -1,0 +1,15 @@
+/*
+ *
+ * {{ name }}
+ *
+ * can also import httpPost, localStorageGetItem, localStorageSetItem, localStorageRemoveItem from ../externalApis
+ *
+ */
+
+import { call, put } from 'redux-saga/effects'
+import { httpGet } from '../externalApis'
+
+export default function* {{ name }} () {
+  const thing = yield call(httpGet, '/getThing/123')
+  if (thing) yield put({type: 'GOT_THING'})
+}
